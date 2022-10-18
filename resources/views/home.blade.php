@@ -60,6 +60,15 @@
             </div>
             @endif
 
+            @if (session('success3'))
+            <div id="alert" class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{ session('success3') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            @endif
+
 
             @if (session('error'))
             <div id="alert" class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -96,7 +105,7 @@
                     <th class="text-center" style="color: white" scope="col">NOMBRE PRODUCTO</th>
                     <th class="text-center" style="color: white" scope="col">PRECIO PRODUCTO</th>
                     <th class="text-center" style="color: white" scope="col">CANTIDAD</th>
-                    <th class="text-center " style="color: white" scope="col" colspan = 2>ACCIONES</th>
+                    <th class="text-center " style="color: white" scope="col" colspan = 3>ACCIONES</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -118,9 +127,10 @@
 
                             </td>
                             <td>
-                                <a title=" Editar"  class="btn btn-warning">
+                                <a title=" Editar" href="{{ route('inventary.editProduct', $product->id) }}" class="btn btn-warning">
                                   Editar  <i class="fa-solid fa-pen-to-square"></i></a>
                             </td>
+
                         </tr>
                     @endforeach
 

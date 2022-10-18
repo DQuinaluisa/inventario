@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -35,6 +36,7 @@ class ProductController extends Controller
     }
 
 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -56,7 +58,7 @@ class ProductController extends Controller
 
         $request->validate([
             'product_code' =>['required', 'alpha_num', 'max:13'],
-            'product_name' =>['required', 'alpha_num'],
+            'product_name' =>['required', 'string'],
             'product_price' => ['required', 'numeric'],
             'product_stock' =>['required', 'numeric'],
             'product_lote' => ['required', 'alpha_num'],
@@ -150,7 +152,16 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+         $product = Product::find($id);
+
+        // $product = DB::table('products')
+        // ->select('id', 'product_name', 'product_code', 'product_lote', 'product_stock', 'product_price', 'category_id')
+        // ->find($id);
+       $category = Category::all();
+
+
+
+        return view('inventary.editProduct', compact('product', 'category'));
     }
 
     /**
@@ -170,6 +181,16 @@ class ProductController extends Controller
             ], 400);
         }
 
+        $request->validate([
+            'product_code' =>['required', 'alpha_num', 'max:13'],
+            'product_name' =>['required', 'string'],
+            'product_price' => ['required', 'numeric'],
+            'product_stock' =>['required', 'numeric'],
+            'product_lote' => ['required', 'alpha_num'],
+            'category_id' => ['required', 'integer']
+
+        ]);
+
 
         $product->product_name = $request->input('product_name');
         $product->product_code = $request->input('product_code');
@@ -179,10 +200,14 @@ class ProductController extends Controller
         $product->category_id = $request->input('category_id');
         $product->save();
 
-        return response()->json([
-            'data' => $product,
-            'msg' => 'Actualizado con exito'
-        ],200);
+        // return response()->json([
+        //     'data' => $product,
+        //     'msg' => 'Actualizado con exito'
+        // ],200);
+
+        $success3 = "Producto Actualizado con exito";
+
+        return redirect('home')->with(compact('success3'));
     }
 
     /**

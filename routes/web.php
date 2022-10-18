@@ -25,6 +25,7 @@ Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index2'])->name('home');
@@ -35,8 +36,15 @@ Auth::routes();
 Route::delete('/home/{id}', [App\Http\Controllers\HomeController::class, 'destroy'])->name('home.destroy');
 Route::get('createProduct', [CategoryController::class, 'index'])->name('inventary.createProduct');
 
+
+
 Route::get('createProducts', [App\Http\Controllers\ProductController::class, 'create'])->name('inventary.createProduct');
 Route::post('createProduct', [App\Http\Controllers\ProductController::class, 'store'])->name('inventary.createProduct');
+Route::get('product-edit/{id}', [App\Http\Controllers\ProductController::class, 'edit'])->name('inventary.editProduct');
+
+Route::patch('product-edit/{id}', [App\Http\Controllers\ProductController::class, 'update'])->name('inventary.editProduct');
+//Route::get()
+
 
 
 // Auth::routes();

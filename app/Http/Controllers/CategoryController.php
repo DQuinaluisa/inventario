@@ -27,6 +27,8 @@ class CategoryController extends Controller
         return view('inventary.createProduct', compact('categories'));
     }
 
+
+
     /**
      * Show the form for creating a new resource.
      *
