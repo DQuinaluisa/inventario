@@ -55,17 +55,26 @@
                                 <br>
                                 </div>
 
+
+
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <strong>Lote del Producto:</strong>
-                                            <input type="text" name="product_lote"   class="form-control @error('product_lote') is-invalid @enderror "  required >
-                                            @error('product_lote')
-                                            <span class="invalid-feedback" role="alert">
-                                                {{-- <strong>Ingrese el Peso del Producto</strong> --}}
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
+                                        <strong>Proveedor:</strong>
+                                        {{-- <input type="category_id" name="category_id"  class="form-control"   > --}}
+                                        <select type="provider_id" name="provider_id" class="form-select @error('provider_id') is-invalid @enderror"  required aria-label="Default select example">
+                                            <option selected>Elija una Categoria</option>
+                                            @foreach ($providers as $provider )
+                                              <option name="provider_id" value="{{ $provider->id }}">{{ $provider->provider_name }}</option>
+                                            @endforeach
+
+                                          </select>
+                                          @error('category_id')
+                                          <span class="invalid-feedback" role="alert">
+                                              <strong>Elija una categoria</strong>
+                                              {{-- <strong>{{ $message }}</strong> --}}
+                                          </span>
+                                          @enderror
+                                    </div>
                                 <br>
                                 </div>
 
@@ -88,6 +97,20 @@
                                           </span>
                                           @enderror
                                     </div>
+                                <br>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <strong>Lote del Producto:</strong>
+                                            <input type="text" name="product_lote"   class="form-control @error('product_lote') is-invalid @enderror "  required >
+                                            @error('product_lote')
+                                            <span class="invalid-feedback" role="alert">
+                                                {{-- <strong>Ingrese el Peso del Producto</strong> --}}
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
                                 <br>
                                 </div>
 

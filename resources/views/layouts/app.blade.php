@@ -64,12 +64,25 @@
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('home') }}">
-                                        Panel Administrador
+                                        <i class="fa-solid fa-solar-panel"></i> Panel Administrador
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('inventary.createCategory') }}">
+                                        <i class="fa-solid fa-list"></i> Categorias
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{ route('providers.listProviders') }}">
+                                        <i class="fa-solid fa-users"></i>   Proveedores
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('inventary.addListProducts') }}">
+                                        <i class="fa-solid fa-bars"></i>   Entrada de Productos
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('sales.listSales') }}">
+                                        <i class="fa-solid fa-cart-shopping"></i>   Salida de Productos
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                      <i class="fa-solid fa-arrow-right-from-bracket"></i>  {{ __('Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

@@ -48,10 +48,11 @@
                       <tr>
                         <th class="text-center" style="color: white" scope="col">CODIGO</th>
                         <th class="text-center" style="color: white" scope="col">LOTE</th>
+                        <th class="text-center" style="color: white" scope="col">CATEGORIA</th>
                         <th class="text-center" style="color: white" scope="col">NOMBRE PRODUCTO</th>
                         <th class="text-center" style="color: white" scope="col">PRECIO PRODUCTO</th>
                         <th class="text-center" style="color: white" scope="col">CANTIDAD</th>
-                        <th class="text-center" style="color: white" scope="col">ACCIONES</th>
+                        <th class="text-center" style="color: white" scope="col">FECHA INGRESO</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -59,10 +60,11 @@
                         <tr>
                             <th class="text-center" scope="row">{{ $product->product_code }}</th>
                             <th class="text-center" scope="row">{{ $product->product_lote }}</th>
+                            <th class="text-center" scope="row">{{ $product->category_name }}</th>
                             <td class="text-center" >{{ $product->product_name }}</td>
                             <td class="text-center" >${{ $product->product_price }} c/u.</td>
                             <td class="text-center" >{{ $product->product_stock }} un. </td>
-                            <td ></td>
+                            <th  class="text-center" scope="row">{{ date('d-m-Y', strtotime($product->created_at)) }}</th>
                           </tr>
                         @endforeach
 

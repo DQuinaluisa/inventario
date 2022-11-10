@@ -39,6 +39,8 @@
         <div class="col-md-6">
             <a href="{{ route('inventary.createProduct') }}" class="btn btn-primary">Crear Producto
                 <i class="fa-solid fa-plus"></i></a>
+                <a style="color: white" title=" Editar" href="{{ route('sales.listProducts') }}" class="btn btn-success">
+                    Despacho  <i class="fa-solid fa-truck-fast"></i> </a>
         </div>
         <div class="col-md-6">
 
@@ -86,6 +88,15 @@
               </button>
             </div>
             @endif
+
+            @if (session('mensaje'))
+            <div id="alert" class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('mensaje') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            @endif
         </div>
     </div>
 </div>
@@ -100,36 +111,50 @@
             <table class="table ">
                 <thead style="background-color: rgb(27, 27, 27);" >
                   <tr>
+
                     <th class="text-center" style="color: white" scope="col">CODIGO</th>
-                    <th class="text-center" style="color: white" scope="col">LOTE</th>
+                    {{-- <th class="text-center" style="color: white" scope="col">LOTE</th> --}}
+                    <th class="text-center" style="color: white" scope="col">CATEGORIA</th>
                     <th class="text-center" style="color: white" scope="col">NOMBRE PRODUCTO</th>
                     <th class="text-center" style="color: white" scope="col">PRECIO PRODUCTO</th>
                     <th class="text-center" style="color: white" scope="col">CANTIDAD</th>
+                    <th class="text-center" style="color: white" scope="col">FECHA INGRESO</th>
                     <th class="text-center " style="color: white" scope="col" colspan = 3>ACCIONES</th>
                   </tr>
                 </thead>
                 <tbody>
                     @foreach ($products as $product )
                         <tr>
+
                             <th  class="text-center" scope="row">{{ $product->product_code }}</th>
-                            <th  class="text-center" scope="row">{{ $product->product_lote }}</th>
+                            {{-- <th  class="text-center" scope="row">{{ $product->product_lote }}</th> --}}
+                            <th  class="text-center" scope="row">{{ $product->category_name }}</th>
                             <td class="text-center">{{ $product->product_name }}</td>
                             <td class="text-center"> ${{ $product->product_price }} c/u</td>
-                            <td class="text-center">{{ $product->product_stock }} un.</td>
+                            <td class="text-center">{{ $product->product_stock  }} un.</td>
+                            <th  class="text-center" scope="row">{{ date('d-m-Y', strtotime($product->created_at)) }}</th>
                             <td class="text-center">
                                 <form action="{{ route('home.destroy',$product->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button  title=" Eliminar"  class="btn btn-danger">
-                                   Eliminar <i class="fa-solid fa-trash"></i>
+                                    <i class="fa-solid fa-trash"></i>
                                 </button>
                                 </form>
 
                             </td>
                             <td>
                                 <a title=" Editar" href="{{ route('inventary.editProduct', $product->id) }}" class="btn btn-warning">
-                                  Editar  <i class="fa-solid fa-pen-to-square"></i></a>
+                                    <i class="fa-solid fa-pen-to-square"></i></a>
                             </td>
+                            <td>
+                                <a title=" Agregar Productos"  class="btn btn-info" href="{{ route('inventary.addProducts', $product->id) }}" >
+                                   <i class="fa-solid fa-plus"></i></i></a>
+                            </td>
+                            {{-- <td>
+                                <a style="color: white" title=" Editar" href="{{ route('sales.createSales', $product->id) }}" class="btn btn-success">
+                                  Salida de Productos  <i class="fa-solid fa-pen-to-square"></i></a>
+                            </td> --}}
 
                         </tr>
                     @endforeach

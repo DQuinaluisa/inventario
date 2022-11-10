@@ -16,10 +16,19 @@ class Product extends Model
         'product_stock',
         'product_lote',
         'category_id',
+        'provider_id'
     ];
 
     public function categories() {
         return $this->hasOne(Category::class);
+    }
+
+    public function providers() {
+        return $this->hasMany(Provider::class);
+    }
+
+    public function sales() {
+        return $this->belongsTo(Sales::class);
     }
 
     public function scopeCode ($query, $product_code)

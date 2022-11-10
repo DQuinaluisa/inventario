@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Provider;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class CategoryController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
 
     /**
@@ -22,11 +23,41 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-
+        $providers = Provider::all();
         //return response()->json($categories);
-        return view('inventary.createProduct', compact('categories'));
+        return view('inventary.createProduct', compact('categories', 'providers'));
     }
 
+
+    public function index2()
+    {
+        //$categories = Category::all();
+
+        $categories = DB::table('categories')
+        ->paginate(4);
+
+        //return response()->json($categories);
+        return view('inventary.createCategory', compact('categories'));
+    }
+
+
+    public function listByCategory (Request $request)
+    {
+        $name = $request->input('name');
+
+
+
+            $categories = DB::table('categories')
+            ->leftJoin('products', 'categories.id', '=', 'products.category_id')
+            ->where('categories.category_name', '=', $name)
+            ->paginate(5);
+
+           return view('inventary.listByCategory', compact('categories'));
+
+
+
+
+    }
 
 
     /**
@@ -37,7 +68,7 @@ class CategoryController extends Controller
     public function create()
     {
 
-
+        return view('inventary.createCategory');
 
     }
 
@@ -49,11 +80,45 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $categories = new Category;
-        $categories->category_name = $request->input('category_name');
-        $categories->save();
 
-        return response()->json($categories);
+
+        $request->validate([
+            'category_name' =>['required', 'string' ],
+
+
+        ]);
+
+        $consulta = $request->input('category_name');
+
+
+        $respuesta = DB::table('categories')
+        ->where('category_name', '=', $consulta)
+        ->first();
+
+
+        if(!$respuesta)
+        {
+            $categories = new Category;
+            $categories->category_name = $consulta;
+            $categories->save();
+
+            $message = "Categoria creada con exito";
+
+            //return response()->json($categories);
+
+            return redirect('/category')->with(compact('message'));
+        }
+
+        if($respuesta)
+        {
+            $error = "Este nombre de categoria ya existe";
+
+            return redirect('/category')->with( compact('error'));
+
+        }
+
+
+
     }
 
     /**
@@ -77,7 +142,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        $providers = Provider::all();
+        return view('inventary.editCategory', compact('category', 'providers'));
     }
 
     /**
@@ -101,7 +168,11 @@ class CategoryController extends Controller
         $categories->category_name = $request->input('category_name');
         $categories->save();
 
-        return response()->json($categories);
+        $edit = "Categoria actualizada con exito";
+
+        return redirect('/category')->with(compact('edit'));
+
+        //return response()->json($categories);
     }
 
     /**
@@ -122,8 +193,13 @@ class CategoryController extends Controller
         }
 
 
+
         $categories->delete();
 
-        return response()->json($categories);
+        $success = "Categoria eliminado con exito";
+
+        return redirect('/category')->with(compact('success'));
+
+       // return response()->json($categories);
     }
 }

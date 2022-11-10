@@ -27,7 +27,8 @@ class HomeController extends Controller
     {
         $buscar = $request->get('buscar');
 
-        $products = DB::table('products')
+        $products = DB::table('categories')
+        ->leftJoin('products', 'categories.id', '=', 'products.category_id')
         ->where('product_code', 'LIKE', '%' .$buscar.  '%')
         ->orWhere('product_lote', 'LIKE', '%' .$buscar. '%')
         ->paginate(4);
