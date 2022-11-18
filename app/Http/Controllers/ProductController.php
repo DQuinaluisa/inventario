@@ -287,6 +287,8 @@ class ProductController extends Controller
         $valor3 = $product['product_price'];
         $valor4 = $product['product_stock'];
         $valor5 = $product['product_lote'];
+        $valor6 = $product['date_entry'];
+        $valor7 = $product['date_expiration'];
 
         $reports = new Report();
         $reports->product_name =  $valor1;
@@ -294,10 +296,12 @@ class ProductController extends Controller
         $reports->product_price =$valor3;
         $reports->product_stock = $cantidad;
         $reports->product_lote = $valor5;
-        $product->date_entry = $request->input('date_entry');
-        $product->date_expiration = $request->input('date_expiration');
+        $reports->date_entry = $valor6;
+        $reports->date_expiration = $valor7;
 
         $reports->save();
+
+      
 
         $success3 = "Productos Agregados con exito";
         return redirect('home')->with(compact('success3'));
