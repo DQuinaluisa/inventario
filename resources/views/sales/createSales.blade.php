@@ -54,7 +54,7 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <strong>Cantidad:</strong>
+                                        <strong>Fecha de Salida:</strong>
                                             <input type="date" name="departure_date"    class="form-control @error('departure_date') is-invalid @enderror" required  >
                                             @error('departure_date')
                                             <span class="invalid-feedback" role="alert">

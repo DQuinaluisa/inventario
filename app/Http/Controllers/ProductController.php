@@ -294,6 +294,8 @@ class ProductController extends Controller
         $reports->product_price =$valor3;
         $reports->product_stock = $cantidad;
         $reports->product_lote = $valor5;
+        $product->date_entry = $request->input('date_entry');
+        $product->date_expiration = $request->input('date_expiration');
 
         $reports->save();
 
