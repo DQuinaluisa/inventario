@@ -80,6 +80,8 @@ class ProductController extends Controller
             'product_price' => ['required', 'numeric'],
             'product_stock' =>['required', 'numeric'],
             'product_lote' => ['required', 'alpha_num'],
+            'date_entry' => ['required', 'date'],
+            'date_expiration' => ['required', 'date'],
             'provider_id' => ['required', 'integer'],
             'category_id' => ['required', 'integer']
 
@@ -112,6 +114,8 @@ class ProductController extends Controller
                 $product->product_price = $request->product_price;
                 $product->product_stock = $request->product_stock;
                 $product->product_lote = $request->product_lote;
+                $product->date_entry = $request->date_entry;
+                $product->date_expiration = $request->date_expiration;
                 $product->provider_id = $request->provider_id;
                 $product->category_id = $request->category_id;
                 $product->save();
@@ -127,6 +131,8 @@ class ProductController extends Controller
             $reports->product_price = $request->product_price;
             $reports->product_stock = $request->product_stock;
             $reports->product_lote = $request->product_lote;
+            $reports->date_entry = $request->date_entry;
+            $reports->date_expiration = $request->date_expiration;
 
             $reports->save();
 
@@ -234,6 +240,8 @@ class ProductController extends Controller
         $product->product_price = $request->input('product_price');
         $product->product_stock = $request->input('product_stock');
         $product->product_lote = $request->input('product_lote');
+        $product->date_entry = $request->input('date_entry');
+        $product->date_expiration = $request->input('date_expiration');
         $product->provider_id = $request->input('provider_id');
         $product->category_id = $request->input('category_id');
         $product->save();

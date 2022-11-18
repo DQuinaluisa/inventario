@@ -4,8 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src=
-"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js">
     </script>
 
     <!-- CSRF Token -->
@@ -13,6 +12,7 @@
 
     <title> Inventary </title>
 
+    <link rel="shortcut icon" href="{{URL::asset('img/logo.png')}}">
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -27,8 +27,9 @@
     <div id="app">
         <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
+
                 <a class="navbar-brand" href="{{ route('welcome') }}">
-                    Inventary
+                    <img src="{{URL::asset('img/logo.png')}}"  style="height: 60px;" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -98,6 +99,7 @@
 <br>
 <br>
 <br>
+<br>
         <main class="py-4">
             @yield('content')
         </main>
@@ -116,4 +118,6 @@
     });
 }, 4000);
 </script>
+
+
 </html>

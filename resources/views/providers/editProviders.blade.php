@@ -55,11 +55,24 @@
                                         </div>
                                 <br>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <strong>Email:</strong>
+                                            <input type="email" name="email" value="{{ $providers->email }}"  class="form-control @error('email') is-invalid @enderror"  required >
+                                            @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                {{-- <strong>Ingrese el nombre del producto</strong> --}}
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                <br>
+                                </div>
 
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <strong>Direccion:</strong>
-                                            <input type="text" name="provider_address" value="{{ $providers->provider_address }}"  class="form-control @error('provider_address') is-invalid @enderror "  required >
+                                            <textarea type="text" name="provider_address" value="{{ $providers->provider_address }}"  class="form-control @error('provider_address') is-invalid @enderror "  required ></textarea>
                                             @error('provider_address')
                                             <span class="invalid-feedback" role="alert">
                                                 {{-- <strong>Ingrese el Peso del Producto</strong> --}}

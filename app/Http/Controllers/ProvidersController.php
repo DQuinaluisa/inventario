@@ -68,13 +68,15 @@ class ProvidersController extends Controller
         $request->validate([
             'provider_name'  =>['required', 'string'],
             'provider_phone'  =>['required', 'string'],
-            'provider_address' => ['required', 'string']
+            'provider_address' => ['required', 'string'],
+            'email' => ['required', 'email'],
         ]);
 
         $providers = new Provider;
         $providers->provider_name = $request->input('provider_name');
         $providers->provider_phone = $request->input('provider_phone');
         $providers->provider_address = $request->input('provider_address');
+        $providers->email = $request->input('email');
         $providers->save();
 
         $success = "Proveedor creado con exito";
@@ -131,6 +133,7 @@ class ProvidersController extends Controller
         $providers->provider_name = $request->input('provider_name');
         $providers->provider_phone = $request->input('provider_phone');
         $providers->provider_address = $request->input('provider_address');
+        $providers->email = $request->input('email');
         $providers->save();
 
         $edit = "Proveedor actualizada con exito";

@@ -16,6 +16,7 @@ class CreateSalesTable extends Migration
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
             $table->integer('products_sales');
+            $table->date('departure_date')->comment('fecha de salida');
             $table->foreignId('product_id')
             ->constrained('products');
             $table->timestamps();

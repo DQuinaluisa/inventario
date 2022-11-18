@@ -59,6 +59,7 @@
                                     <th class="text-center" style="color: white" scope="col">#</th>
                                     <th class="text-center" style="color: white" scope="col">PROVEEDOR</th>
                                     <th class="text-center" style="color: white" scope="col">TELEFONO</th>
+                                    <th class="text-center " style="color: white" scope="col">EMAIL</th>
                                     <th class="text-center " style="color: white" scope="col">DIRECCION</th>
                                     <th class="text-center " style="color: white" scope="col" colspan="2">ACCIONES</th>
 
@@ -70,6 +71,7 @@
                                             <th></th>
                                                 <th>{{ $provider->provider_name }}</th>
                                                 <th>{{ $provider->provider_phone }}</th>
+                                                <th>{{ $provider->email }}</th>
                                                 <th>{{ $provider->provider_address }}</th>
                                                 <th>
                                                     <a title=" Editar" href="{{ route('providers.editProviders', $provider->id) }}" class="btn btn-warning">

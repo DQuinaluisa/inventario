@@ -12,7 +12,8 @@ class Provider extends Model
     protected $fillable = [
         'provider_name',
         'provider_phone',
-        'provider_address'
+        'provider_address',
+        'email'
     ];
 
     public function products (){

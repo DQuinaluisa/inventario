@@ -2,7 +2,7 @@
 
 @section('content')
 
-<style>
+{{-- <style>
     .pagination{
       float: right;
       margin-top: 10px;
@@ -77,6 +77,79 @@
             </div>
             <div class="col-md-1"></div>
         </div>
+    </div> --}}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-6">
+
+            <img src="{{URL::asset('img/foto.jpeg')}}"  style="height: 80%; margin-left: 10%" alt="">
+
+
+        </div>
+        <div class="col-md-3">
+
+        </div>
     </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div  class="col-md-12">
+            <div class="card" style="background-color: rgb(80, 165, 59); border-radius:15px" >
+                <p style="margin: 3%; font-size:150%; font-weight:600; " class="text-center" >
+                    Naturis't es una organización dedicad
+                    a la elaboración y comercialización de productos cosméticos. Se ha ubicado desd
+                    sus inicios en la ciudad de Quito. Inicialmente se enfocó en atender a clientes de la
+                    misma ciudad, pero con el transcurso del tiempo fue ampliando su cobertura :
+                    hoy en día sus productos se comercializan a nivel nacional.
+                </p>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<br>
+
+<br>
+
+<div style="padding: 5%" class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div style="background-color: rgb(145, 145, 145)" class="card text-center">
+              <div style="margin: 3%; font-size:120%; ">
+                <h1>Misión</h1>
+                <p>
+                    Naturis't brinda una opción de vida a nuestra sociedad, ofreciendo a nuestros
+                    clientes cremas, shampoos, pomadas, aceites, preocupándose por el nivel de vida
+                    social y económico de nuestros colaboradores, trabajando en un ambiente
+                    agradable, respetando las normativas y reglamentos y manteniendo un
+                    rendimiento económico competitivo.
+                </p>
+              </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div style="background-color: rgb(145, 145, 145)" class="card text-center">
+                <div style="margin: 3%; font-size:120%;">
+                    <h1>Visión</h1>
+                <p>
+                    Para el año 2025, seremos líderes en la provisión de nuestros productos,
+                    contaremos con infraestructura, maquinaria y tecnología adecuada para la
+                    exportación, ayudados por un sistema de gestión de calidad, personal capacitado y
+                    a gusto en su trabajo. Enfocados en satisfacer las necesidades del cliente,
+                    mejorando y desarrollando nuevos productos que aporten a la sociedad.
+                </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Report;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ReportsController extends Controller
 {
@@ -12,9 +13,21 @@ class ReportsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $reports = Report::paginate(10);
+        // $reports = Report::paginate(10);
+
+        $buscar = $request->get('buscar');
+
+        $reports = DB::table('reports')
+        ->where('date_entry', 'LIKE', '%' .$buscar.  '%')
+        ->select('*')
+       ->paginate(10);
+
+        $data = [
+            'reports' => $reports,
+            'buscar' => $buscar
+        ];
 
         return view('inventary.addListProducts', compact('reports'));
     }

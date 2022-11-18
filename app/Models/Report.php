@@ -14,7 +14,9 @@ class Report extends Model
         'product_code',
         'product_price',
         'product_stock',
-        'product_lote'
+        'product_lote',
+        'date_entry',
+        'date_expiration',
 
     ];
 }

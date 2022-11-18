@@ -14,15 +14,33 @@ class SalesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        // $sales = DB::table('products')
+        // ->join('sales', 'products.id', '=', 'sales.product_id')
+        // ->select('*')
+        // ->orderBy('sales.id', 'desc')->paginate(10);
+
+        $buscar = $request->get('buscar');
+
         $sales = DB::table('products')
-        ->leftJoin('sales', 'products.id', '=', 'sales.product_id')
+        ->join('sales', 'products.id', '=', 'sales.product_id')
+        ->where('departure_date', 'LIKE', '%' .$buscar.  '%')
         ->select('*')
-        ->orderBy('sales.id', 'desc')->paginate(10);
+         ->orderBy('sales.id', 'desc')->paginate(10);
+
+        $data = [
+            'sales' => $sales,
+            'buscar' => $buscar
+        ];
+        // $products = Product::all();
+
+        //return response()->json($product);
+
+       return view('sales.listSales', $data);
 
 
-     return view('sales.listSales', compact('sales'));
+    //  return view('sales.listSales', compact('sales'));
 
         // return response()->json([
         //     'data' => $sales
@@ -73,6 +91,7 @@ class SalesController extends Controller
 
        $request->validate([
         'products_sales' =>['required', 'numeric'],
+        'departure_date' =>['required', 'date']
 
 
     ]);
@@ -98,6 +117,7 @@ class SalesController extends Controller
         {
                 $sales = new Sales();
             $sales->products_sales = $cantidad;
+            $sales->departure_date = $request->input('departure_date');
             $sales->product_id = $id;
 
             $sales->save();

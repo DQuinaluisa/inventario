@@ -9,6 +9,22 @@
                 <h2>Salida de Productos</h2>
             </div>
             <div class="col-md-6">
+                <form action="{{ route('sales.listSales') }}" method="GET">
+                    <div class="input-group">
+
+                        <input  type="date" class="form-control" name="buscar" autofocus  placeholder="Ingrese el Codigo">
+                        <div class="input-group-append">
+                        <button class="btn btn-outline-success" type="submit" value="Buscar">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                        </div>
+                        {{-- <a style="margin-left: 2%" class="btn btn-outline-dark"  href="{{ route('welcome') }}" >
+                            <i class="fa-solid fa-rotate-left"></i>
+                        </a> --}}
+                        </div>
+
+                </form>
+                <br>
                 @if (session('success'))
                 <div id="alert" class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('success') }}
@@ -56,7 +72,8 @@
                                             <th  class="text-center" scope="row">{{ $product->product_name }}</th>
                                             <th  class="text-center" scope="row">{{ $product->products_sales }}</th>
                                             {{-- <th  class="text-center" scope="row">{{ $product->product_stock }}</th> --}}
-                                            <th  class="text-center" scope="row">{{ date('d-m-Y', strtotime($product->created_at)) }}</th>
+                                            {{-- <th  class="text-center" scope="row">{{ date('d-m-Y', strtotime($product->departure_date)) }}</th> --}}
+                                            <th  class="text-center" scope="row">{{ $product->departure_date }}</th>
                                         </tr>
                                     @endforeach
 

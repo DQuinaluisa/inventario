@@ -15,6 +15,8 @@ class Product extends Model
         'product_price',
         'product_stock',
         'product_lote',
+        'date_entry',
+        'date_expiration',
         'category_id',
         'provider_id'
     ];

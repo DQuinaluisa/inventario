@@ -103,6 +103,34 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <strong>Fecha de Ingreso:</strong>
+                                        <input type="date" name="date_entry"   value="{{ $product->date_entry }}" class="form-control @error('date_entry') is-invalid @enderror " required  >
+                                        @error('date_entry')
+                                        <span class="invalid-feedback" role="alert">
+                                            {{-- <strong>Ingrese el precio del </strong> --}}
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                            <br>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <strong>Fecha de expiracion:</strong>
+                                        <input type="date" name="date_expiration"   value="{{ $product->date_expiration }}" class="form-control @error('date_expiration') is-invalid @enderror " required  >
+                                        @error('date_expiration')
+                                        <span class="invalid-feedback" role="alert">
+                                            {{-- <strong>Ingrese el precio del </strong> --}}
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                            <br>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
                                     <strong>Precio del Producto:</strong>
                                         <input type="text" name="product_price"   class="form-control "  value="{{ $product->product_price }}"  >
 

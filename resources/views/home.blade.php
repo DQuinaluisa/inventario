@@ -119,6 +119,7 @@
                     <th class="text-center" style="color: white" scope="col">PRECIO PRODUCTO</th>
                     <th class="text-center" style="color: white" scope="col">CANTIDAD</th>
                     <th class="text-center" style="color: white" scope="col">FECHA INGRESO</th>
+                    <th class="text-center" style="color: white" scope="col">FECHA EXPIRACION</th>
                     <th class="text-center " style="color: white" scope="col" colspan = 3>ACCIONES</th>
                   </tr>
                 </thead>
@@ -132,7 +133,8 @@
                             <td class="text-center">{{ $product->product_name }}</td>
                             <td class="text-center"> ${{ $product->product_price }} c/u</td>
                             <td class="text-center">{{ $product->product_stock  }} un.</td>
-                            <th  class="text-center" scope="row">{{ date('d-m-Y', strtotime($product->created_at)) }}</th>
+                            <th  class="text-center" scope="row">{{ date('d-m-Y', strtotime($product->date_entry)) }}</th>
+                            <th  class="text-center" scope="row">{{ date('d-m-Y', strtotime($product->date_expiration)) }}</th>
                             <td class="text-center">
                                 <form action="{{ route('home.destroy',$product->id) }}" method="POST">
                                 @csrf
