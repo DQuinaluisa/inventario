@@ -13,7 +13,8 @@ class Provider extends Model
         'provider_name',
         'provider_phone',
         'provider_address',
-        'email'
+        'email',
+        'ruc'
     ];
 
     public function products (){

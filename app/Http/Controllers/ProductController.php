@@ -12,10 +12,10 @@ use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
 
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     /**
      * Display a listing of the resource.
@@ -301,7 +301,7 @@ class ProductController extends Controller
 
         $reports->save();
 
-      
+
 
         $success3 = "Productos Agregados con exito";
         return redirect('home')->with(compact('success3'));

@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProvidersController;
 use App\Http\Controllers\SalesController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -44,5 +45,8 @@ Route::put('add-product/{id}', [ProductController::class, 'productsAdd']);
 Route::get('sales', [SalesController::class, 'index']);
 Route::post('sales/{id}', [SalesController::class, 'store']);
 Route::get('sales/{id}', [SalesController::class, 'create']);
+
+Route::get('list-user', [UserController::class, 'index']);
+Route::put('list-user/{id}', [UserController::class, 'update']);
 
 Route::get('home', [HomeController::class, 'index2']);

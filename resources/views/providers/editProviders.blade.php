@@ -44,6 +44,20 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                        <strong>RUC:</strong>
+                                            <input type="ruc" name="ruc"  value="{{ $providers->ruc }}"  class="form-control @error('ruc') is-invalid @enderror" required  >
+                                            @error('ruc')
+                                            <span class="invalid-feedback" role="alert">
+                                                {{-- <strong>Ingrese el codigo del producto</strong> --}}
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                <br>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
                                         <strong>Numero de Telefono:</strong>
                                             <input type="provider_phone" name="provider_phone" value="{{ $providers->provider_phone }}"  class="form-control @error('provider_phone') is-invalid @enderror"  required >
                                             @error('provider_phone')

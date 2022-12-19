@@ -73,7 +73,7 @@
                                             <th  class="text-center" scope="row">{{ $product->products_sales }}</th>
                                             {{-- <th  class="text-center" scope="row">{{ $product->product_stock }}</th> --}}
                                             {{-- <th  class="text-center" scope="row">{{ date('d-m-Y', strtotime($product->departure_date)) }}</th> --}}
-                                            <th  class="text-center" scope="row">{{ $product->departure_date }}</th>
+                                            <th  class="text-center" scope="row">{{ date('d-m-Y', strtotime($product->departure_date)) }}</th>
                                         </tr>
                                     @endforeach
 

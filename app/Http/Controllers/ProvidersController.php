@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\DB;
 
 class ProvidersController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -70,6 +76,7 @@ class ProvidersController extends Controller
             'provider_phone'  =>['required', 'string'],
             'provider_address' => ['required', 'string'],
             'email' => ['required', 'email'],
+            'ruc' => ['required', 'string'],
         ]);
 
         $providers = new Provider;
@@ -77,6 +84,7 @@ class ProvidersController extends Controller
         $providers->provider_phone = $request->input('provider_phone');
         $providers->provider_address = $request->input('provider_address');
         $providers->email = $request->input('email');
+        $providers->ruc = $request->input('ruc');
         $providers->save();
 
         $success = "Proveedor creado con exito";
@@ -134,6 +142,7 @@ class ProvidersController extends Controller
         $providers->provider_phone = $request->input('provider_phone');
         $providers->provider_address = $request->input('provider_address');
         $providers->email = $request->input('email');
+        $providers->ruc = $request->input('ruc');
         $providers->save();
 
         $edit = "Proveedor actualizada con exito";

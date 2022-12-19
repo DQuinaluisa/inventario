@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Report;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-
-class ReportsController extends Controller
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
+class UserController extends Controller
 {
     public function __construct()
     {
@@ -19,23 +19,16 @@ class ReportsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        // $reports = Report::paginate(10);
+        $user = User::paginate(2);
 
-        $buscar = $request->get('buscar');
+      return view('users.listUsers', compact('user'));
 
-        $reports = DB::table('reports')
-        ->where('date_entry', 'LIKE', '%' .$buscar.  '%')
-        ->select('*')
-       ->paginate(10);
+        // return response()->json([
+        //         'data' => $user,
 
-        $data = [
-            'reports' => $reports,
-            'buscar' => $buscar
-        ];
-
-        return view('inventary.addListProducts', compact('reports'));
+        //     ], 200);
     }
 
     /**
@@ -78,7 +71,9 @@ class ReportsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+
+        return view('users.editUser', compact('user'));
     }
 
     /**
@@ -90,7 +85,35 @@ class ReportsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        $request->validate( [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'password' => ['required', 'string', 'min:8'],
+        ]);
+
+
+        //$contra = $user['password'];
+
+        $pass = $request->input('password');
+
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password =  Hash::make($pass);
+       // $user->password = $request->input('password');
+        $user->save();
+
+        $success = "Usuario actualizado con exito";
+
+        return redirect('list-user')->with(compact('success'));
+
+        //  return response()->json([
+        //         'data' => $user,
+
+        //     ], 200);
+
+
     }
 
     /**
@@ -101,6 +124,12 @@ class ReportsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+
+        $user->delete();
+
+        $success = "Usuario eliminado con exito";
+
+        return redirect('list-user')->with(compact('success'));
     }
 }

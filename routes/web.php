@@ -3,6 +3,7 @@
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProvidersController;
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -71,6 +72,12 @@ Route::get('addProducts', [App\Http\Controllers\ReportsController::class, 'index
 Route::get('list-sales', [App\Http\Controllers\SalesController::class, 'index'])->name('sales.listSales');
 Route::get('sales/{id}', [App\Http\Controllers\SalesController::class, 'create'])->name('sales.createSales');
 Route::post('sales/{id}', [App\Http\Controllers\SalesController::class, 'store'])->name('sales.createSales');
+
+
+Route::get('list-user', [App\Http\Controllers\UserController::class, 'index'])->name('users.listUsers');
+Route::get('list-user/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('users.editUser');
+Route::patch('list-user/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('users.editUser');
+Route::delete('list-user/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.listUsers.destroy');
 
 // Auth::routes();
 

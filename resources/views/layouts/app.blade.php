@@ -48,15 +48,15 @@
                             @if (Route::has('login'))
                                 <li class="nav-item">
 
-                                    <a class="nav-link" href="{{ route('login') }}"> <i class="fa-solid fa-user-lock fa-lg"></i> </a>
+                                    <a class="nav-link" href="{{ route('login') }}"> <i class="fa-solid fa-user-lock fa-lg"></i> Login</a>
                                 </li>
                             @endif
-
-                            {{-- @if (Route::has('register'))
+                            /
+                            @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}"> <i class="fa-solid fa-registered"></i> {{ __('Register') }}</a>
                                 </li>
-                            @endif --}}
+                            @endif
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -66,6 +66,9 @@
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('home') }}">
                                         <i class="fa-solid fa-solar-panel"></i> Panel Administrador
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('users.listUsers') }}">
+                                        <i class="fa-solid fa-users"></i> Usuarios
                                     </a>
                                     <a class="dropdown-item" href="{{ route('inventary.createCategory') }}">
                                         <i class="fa-solid fa-list"></i> Categorias
@@ -117,6 +120,16 @@
         $(this).remove();
     });
 }, 4000);
+
+
+function myFunction() {
+  var x = document.getElementById("myInput");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
 </script>
 
 
