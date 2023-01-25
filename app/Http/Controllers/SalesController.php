@@ -133,7 +133,7 @@ class SalesController extends Controller
             SET products.product_stock = products.product_stock - $cantidad
             WHERE products.id = $id");
 
-            $success = "Venta realizada con exito";
+            $success = "Despacho realizado con exito";
 
             return redirect('list-sales')->with(compact('success'));
 

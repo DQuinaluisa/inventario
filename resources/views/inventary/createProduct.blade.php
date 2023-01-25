@@ -62,7 +62,7 @@
                                         <strong>Proveedor:</strong>
                                         {{-- <input type="category_id" name="category_id"  class="form-control"   > --}}
                                         <select type="provider_id" name="provider_id" class="form-select @error('provider_id') is-invalid @enderror"  required aria-label="Default select example">
-                                            <option selected>Elija una Categoria</option>
+                                            <option selected>Elija un Proveedor</option>
                                             @foreach ($providers as $provider )
                                               <option name="provider_id" value="{{ $provider->id }}">{{ $provider->provider_name }}</option>
                                             @endforeach

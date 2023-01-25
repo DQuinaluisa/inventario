@@ -5,13 +5,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h2>Productos por Categoria</h2>
+                <h2>Productos por Proveedor</h2>
             </div>
             <div class="col-md-6">
                 <form action="{{ route('providers.listProductsByProviders') }}" method="GET">
                     <div class="input-group">
 
-                        <input  type="text" class="form-control" name="name" autofocus  placeholder="Ingrese el Nombre de la Categoria">
+                        <input  type="text" class="form-control" name="name" autofocus  placeholder="Ingrese el Nombre del Proveedor">
                         <div class="input-group-append">
                         <button class="btn btn-outline-success" type="submit" >
                             <i class="fa-solid fa-magnifying-glass"></i>
