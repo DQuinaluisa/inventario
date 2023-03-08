@@ -60,7 +60,7 @@
                                     <th class="text-center" style="color: white" scope="col">UNIDADES VENDIDAS</th>
                                     {{-- <th class="text-center " style="color: white" scope="col">UNIDADES EN STOCK</th> --}}
                                     <th class="text-center " style="color: white" scope="col">FECHA DE SALIDA</th>
-
+                                    <th class="text-center " style="color: white" scope="col">HORA DE SALIDA</th>
 
                                   </tr>
                                 </thead>
@@ -72,8 +72,8 @@
                                             <th  class="text-center" scope="row">{{ $product->product_name }}</th>
                                             <th  class="text-center" scope="row">{{ $product->products_sales }}</th>
                                             {{-- <th  class="text-center" scope="row">{{ $product->product_stock }}</th> --}}
-                                            {{-- <th  class="text-center" scope="row">{{ date('d-m-Y', strtotime($product->departure_date)) }}</th> --}}
                                             <th  class="text-center" scope="row">{{ date('d-m-Y', strtotime($product->departure_date)) }}</th>
+                                            <th  class="text-center" scope="row">{{ date('H:i:s', strtotime($product->created_at)) }}</th>
                                         </tr>
                                     @endforeach
 

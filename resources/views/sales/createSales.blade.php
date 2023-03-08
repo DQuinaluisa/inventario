@@ -55,6 +55,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <strong>Fecha de Salida:</strong>
+                                        {{-- datetime-local --}}
                                             <input type="date" name="departure_date"    class="form-control @error('departure_date') is-invalid @enderror" required  >
                                             @error('departure_date')
                                             <span class="invalid-feedback" role="alert">

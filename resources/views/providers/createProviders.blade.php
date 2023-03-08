@@ -41,7 +41,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <strong>RUC :</strong>
-                                            <input type="ruc" name="ruc"    class="form-control @error('ruc') is-invalid @enderror" required  >
+                                            <input type="ruc" name="ruc"    class="form-control @error('ruc') is-invalid @enderror" min="13" max="13" required  >
                                             @error('ruc')
                                             <span class="invalid-feedback" role="alert">
                                                 {{-- <strong>Ingrese el codigo del producto</strong> --}}

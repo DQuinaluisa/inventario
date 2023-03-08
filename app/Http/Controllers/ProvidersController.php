@@ -24,6 +24,7 @@ class ProvidersController extends Controller
         //$providers = Provider::all();
 
         $providers = DB::table('providers')
+        ->orderBy('id', 'desc')
         ->paginate(8);
 
       return view('providers.listProviders', compact('providers'));
@@ -76,7 +77,7 @@ class ProvidersController extends Controller
             'provider_phone'  =>['required', 'string'],
             'provider_address' => ['required', 'string'],
             'email' => ['required', 'email'],
-            'ruc' => ['required', 'string'],
+            'ruc' => ['required', 'string', 'min:13', 'max:13'],
         ]);
 
         $providers = new Provider;
